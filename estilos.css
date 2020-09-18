@@ -1,0 +1,120 @@
+/* ///////////////////////////////////////////////////////////////////////////Cuerpo */
+:root{
+--first-color       :#f0db4f;
+--alpha-color       : 0.9;
+--second-color      : 50,51,48;
+--second-color-rgb  :rgb(var(--second-color));
+--t-texto           :30px;
+--t-texto-S         :35px;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0;
+  padding: 0;
+  color: var(--second-color-rgb);
+}
+header{
+  position: sticky;
+  display: inline-flex;
+  top:0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--first-color);
+  justify-content: center;
+  
+}
+/* ///////////////////////////////////////////////////////////////////////////Funcion */
+.palanca{
+  /* right: -100%; */
+  transform: translate(-100%,0);
+  opacity: 0;
+}
+/* ///////////////////////////////////////////////////////////////////////////Menu */
+#menuPalanca{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(var(--second-color),var(--alpha-color));
+  top: 0;
+  bottom: 0;
+  align-items: center;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+nav ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: inherit;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  padding-top: 5%;
+  padding-bottom: 30%;
+  height: 80vh; 
+}
+nav ul li{
+  display: flex;
+  list-style: none;
+  font-size: var(--t-texto);
+  color: var(--first-color);
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+nav ul li a{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--first-color);
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+}
+nav ul li a:hover{
+  background-color: var(--first-color);
+  color: var(--second-color-rgb);
+  font-size: var(--t-texto-S);
+}
+.section{
+  padding-top:80px;
+  width: 100%;
+  height: 100vh;
+}
+.section h3{
+  width: 100%;
+}
+/* ///////////////////////////////////////////////////////////////////////////Hamburger Menu */
+#botonPalancaContainer{
+  position: fixed;
+  z-index: 999;
+  bottom: 40px;
+  left: 95vw;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--first-color);
+  display: flex;
+}
+
+#botonPalancaContainer .hamburger{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////Section */
+.section h3{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--t-texto);
+  margin: 0;
+}
