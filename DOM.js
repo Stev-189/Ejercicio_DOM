@@ -10,3 +10,15 @@ document.addEventListener("click",(e)=>{
     e.stopPropagation()
   }
 })
+
+const $reloj=document.getElementById("reloj"),
+      $button_view_reloj=document.getElementById("button-view-reloj"),
+      $button_view_stop=document.getElementById("button-view-stop"),
+      $button_sound_inicia=document.getElementById("button-sound-inicia"),
+      $button_sound_stop=document.getElementById("button-sound-stop"),
+      $reloj_creator=document.createTextNode(`${new Date().toLocaleTimeString()}`)
+
+      setInterval(() => {
+        $reloj.appendChild($reloj_creator)
+      }, 1000);
+      
