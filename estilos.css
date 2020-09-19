@@ -118,3 +118,21 @@ nav ul li a:hover{
   font-size: var(--t-texto);
   margin: 0;
 }
+/* ///////////////////////////////////////////////////////////////////////////Section 1*/
+body section div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--t-texto);
+}
+#reloj_container input{
+  text-align: center;
+  user-select: none;
+  outline: none;
+  font-size: 100px;
+  border: 0;
+}
+#reloj_container{
+  display: none;
+
+}

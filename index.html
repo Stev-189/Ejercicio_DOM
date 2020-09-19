@@ -8,7 +8,7 @@
   <link href="hamburgers.css" rel="stylesheet">
 
 </head>
-<body>
+<body >
   <header>
     <h1>Ejercicios del DOM</h1>
   </header>
@@ -31,7 +31,9 @@
   <section id="Section_1" class="section">
     <h3>Section 1</h3>
     <div id="reloj_container" class="container reloj">
-      <h3 id="reloj" class="reloj"></h3>
+      <form name="form_reloj">
+        <input type="text" name="reloj" readonly>
+      </form>
     </div>
     <div id="controlador_reloj" class="container reloj">
       <button id="button-view-reloj" class="button-reloj">Inicar Reloj</button>
