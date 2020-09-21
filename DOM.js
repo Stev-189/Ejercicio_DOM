@@ -42,3 +42,27 @@ document.addEventListener("click",(e)=>{
     e.stopPropagation()
   }
 })
+/////////////////////////////////////////////////////////////////////////////////// Evento Teclado
+const $controladorPelota =document.getElementById("controladorPelota"),
+      $Mapa =document.getElementById("mapa"),
+      $pelota=document.getElementById("pelota")
+
+$controladorPelota.addEventListener("keydown",(e)=>{
+  let topPelotaNow=parseFloat(window.getComputedStyle($pelota).top.replace('px','')),
+      leftPelotaNow=parseFloat(window.getComputedStyle($pelota).left.replace('px','')),
+      heightMapa=parseFloat(window.getComputedStyle($Mapa).height.replace('px','')),
+      widthMapa=parseFloat(window.getComputedStyle($Mapa).width.replace('px','')),
+      peloHeigth=parseFloat(window.getComputedStyle($pelota).height.replace('px','')),
+      peloWidth=parseFloat(window.getComputedStyle($pelota).width.replace('px',''))
+  if(e.key==="ArrowUp"&&topPelotaNow>1)topPelotaNow--;
+  if(e.key==="ArrowDown"&&topPelotaNow<(heightMapa-peloHeigth-1))topPelotaNow++;
+  $pelota.style.top=topPelotaNow+"px"
+  if(e.key==="ArrowLeft"&&leftPelotaNow>1)leftPelotaNow--;
+  if(e.key==="ArrowRight"&&leftPelotaNow<(widthMapa-peloWidth-1))leftPelotaNow++;
+  $pelota.style.left=leftPelotaNow+"px"
+  $controladorPelota.value = "";
+})
+$controladorPelota.addEventListener("keyup",(e)=>{
+  $controladorPelota.value = "";
+})
+/////////////////////////////////////////////////////////////////////////////////// Evento Teclado

@@ -23,6 +23,7 @@ header{
   height: 80px;
   background-color: var(--first-color);
   justify-content: center;
+  z-index: 998;
   
 }
 /* ///////////////////////////////////////////////////////////////////////////Funcion */
@@ -94,7 +95,7 @@ nav ul li a:hover{
   position: fixed;
   z-index: 999;
   bottom: 40px;
-  left: 95vw;
+  right:5vw;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -118,7 +119,7 @@ nav ul li a:hover{
   font-size: var(--t-texto);
   margin: 0;
 }
-/* ///////////////////////////////////////////////////////////////////////////Section 1*/
+/* ///////////////////////////////////////////////////////////////////////////Section 1 reloj*/
 body section div{
   display: flex;
   justify-content: center;
@@ -134,4 +135,33 @@ body section div{
 }
 #reloj_container{
   display: none;
+}
+/* ///////////////////////////////////////////////////////////////////////////Section 2 Evento teclado*/
+#Section_2{
+  display: flex;
+  flex-direction: column;
+
+}
+#mapa{
+  width: 95%;
+  height: 70%;
+  background-color: var(--second-color-rgb);
+  margin: 0 auto;
+  /* position: relative; */
+}
+#pelota{
+  width: 30px;
+  height: 30px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 997;
+}
+#controladorPelota{
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 350px;
+  text-align: center;
 }
