@@ -72,5 +72,4 @@ document.addEventListener("keydown",(e)=>{
   if(e.key==='p'&&e.altKey) prompt(`Haz precionado ALt+${e.key}`)
   if(e.key==='c'&&e.altKey) confirm(`Haz precionado ALt+${e.key}`)
 })
-
 /////////////////////////////////////////////////////////////////////////////////// Evento Teclado
