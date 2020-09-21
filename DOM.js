@@ -53,16 +53,24 @@ $controladorPelota.addEventListener("keydown",(e)=>{
       heightMapa=parseFloat(window.getComputedStyle($Mapa).height.replace('px','')),
       widthMapa=parseFloat(window.getComputedStyle($Mapa).width.replace('px','')),
       peloHeigth=parseFloat(window.getComputedStyle($pelota).height.replace('px','')),
-      peloWidth=parseFloat(window.getComputedStyle($pelota).width.replace('px',''))
-  if(e.key==="ArrowUp"&&topPelotaNow>1)topPelotaNow--;
-  if(e.key==="ArrowDown"&&topPelotaNow<(heightMapa-peloHeigth-1))topPelotaNow++;
+      peloWidth=parseFloat(window.getComputedStyle($pelota).width.replace('px','')),
+      sancada=10
+  if(e.key==="ArrowUp"&&topPelotaNow>sancada)topPelotaNow-=sancada;
+  if(e.key==="ArrowDown"&&topPelotaNow<(heightMapa-peloHeigth-(sancada*2)))topPelotaNow+=sancada;
   $pelota.style.top=topPelotaNow+"px"
-  if(e.key==="ArrowLeft"&&leftPelotaNow>1)leftPelotaNow--;
-  if(e.key==="ArrowRight"&&leftPelotaNow<(widthMapa-peloWidth-1))leftPelotaNow++;
+  if(e.key==="ArrowLeft"&&leftPelotaNow>sancada)leftPelotaNow-=sancada;
+  if(e.key==="ArrowRight"&&leftPelotaNow<(widthMapa-peloWidth-(sancada*2)))leftPelotaNow+=sancada;
   $pelota.style.left=leftPelotaNow+"px"
   $controladorPelota.value = "";
 })
 $controladorPelota.addEventListener("keyup",(e)=>{
   $controladorPelota.value = "";
 })
+
+document.addEventListener("keydown",(e)=>{
+  if(e.key==='a'&&e.altKey) alert(`Haz precionado ALt+${e.key}`)
+  if(e.key==='p'&&e.altKey) prompt(`Haz precionado ALt+${e.key}`)
+  if(e.key==='c'&&e.altKey) confirm(`Haz precionado ALt+${e.key}`)
+})
+
 /////////////////////////////////////////////////////////////////////////////////// Evento Teclado

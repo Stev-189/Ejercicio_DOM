@@ -6,6 +6,7 @@
 --second-color-rgb  :rgb(var(--second-color));
 --t-texto           :30px;
 --t-texto-S         :35px;
+--t-texto--parrafos :20px
 }
 html{
   scroll-behavior: smooth;
@@ -15,6 +16,10 @@ body{
   padding: 0;
   color: var(--second-color-rgb);
 }
+p {
+  font-size: var(--t-texto--parrafos);
+}
+/* ///////////////////////////////////////////////////////////////////////////Header */
 header{
   position: sticky;
   display: inline-flex;
@@ -140,27 +145,25 @@ body section div{
 #Section_2{
   display: flex;
   flex-direction: column;
-
+  align-items:center;
 }
 #mapa{
   width: 95%;
   height: 70%;
   background-color: var(--second-color-rgb);
-  margin: 0 auto;
-  /* position: relative; */
+  align-content: center;
 }
 #pelota{
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   background-color: var(--first-color);
   border-radius: 50%;
   position: relative;
-  top: 50%;
-  left: 50%;
   z-index: 997;
+  top: 45%;
+  left: 50%;
 }
 #controladorPelota{
-  margin: 0 auto;
   margin-top: 10px;
   width: 350px;
   text-align: center;
