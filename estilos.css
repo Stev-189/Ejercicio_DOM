@@ -6,7 +6,8 @@
 --second-color-rgb  :rgb(var(--second-color));
 --t-texto           :30px;
 --t-texto-S         :35px;
---t-texto--parrafos :20px
+--t-texto--parrafos :20px;
+--bottomPX          :20px;
 }
 html{
   scroll-behavior: smooth;
@@ -108,8 +109,8 @@ nav ul li a:hover{
 #botonPalancaContainer{
   position: fixed;
   z-index: 999;
-  bottom: 40px;
-  right:20px;
+  bottom: var(--bottomPX);
+  right:10px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -198,7 +199,7 @@ body section div{
   background: white;
   position: fixed;
   bottom: 16px;
-  right:90px;
+  right:80px;
   width:70px;
   height:70px;
   border-radius: 50%;
@@ -214,7 +215,7 @@ body section div{
 }
 
 .to-top.active {
-  bottom:40px;
+  bottom:var(--bottomPX);
   pointer-events: auto;
   opacity:1;
   background-color: var(--first-color);
