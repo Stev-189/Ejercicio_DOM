@@ -72,11 +72,10 @@ document.addEventListener("keydown",(e)=>{
   if(e.key==='p'&&e.altKey) prompt(`Haz precionado ALt+${e.key}`)
   if(e.key==='c'&&e.altKey) confirm(`Haz precionado ALt+${e.key}`)
 })
-/////////////////////////////////////////////////////////////////////////////////// Evento Teclado
+/////////////////////////////////////////////////////////////////////////////////// SUma resta fecha
 const countDown=(fecha=undefined)=>{
   
-  
-  let hoyMenosFecha= new Date().getTime()-fecha.getTime(),
+  let hoyMenosFecha= new Date().getTime()-fecha.getTime(),//es para convertir las fechas a milisegundos
       absR=Math.abs(hoyMenosFecha),
       arrayDiv=[31536000000, 2592000000, 86400000, 3600000, 60000, 1000],
       arrayF=[],
@@ -128,4 +127,18 @@ document.addEventListener("click", (e)=>{
     fStopCD()
   }
 })
-/////////////////////////////////////////////////////////////////////////////////// Evento Teclado
+/////////////////////////////////////////////////////////////////////////////////// Top Scroll
+const toTop = document.querySelector(".to-top");
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    toTop.classList.add("active");
+  } else {
+    toTop.classList.remove("active");
+  }
+})
+document.addEventListener("click",(e)=>{
+  if(e.target.matches(".to-top")||e.target.matches(".fa-chevron-up")){
+    $menuNav.classList.add("palanca")//esconde menu
+    $hamburger.classList.remove("is-active")//muestra hanburgesa menu
+  }
+})
