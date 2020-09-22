@@ -73,3 +73,59 @@ document.addEventListener("keydown",(e)=>{
   if(e.key==='c'&&e.altKey) confirm(`Haz precionado ALt+${e.key}`)
 })
 /////////////////////////////////////////////////////////////////////////////////// Evento Teclado
+const countDown=(fecha=undefined)=>{
+  
+  
+  let hoyMenosFecha= new Date().getTime()-fecha.getTime(),
+      absR=Math.abs(hoyMenosFecha),
+      arrayDiv=[31536000000, 2592000000, 86400000, 3600000, 60000, 1000],
+      arrayF=[],
+      arrayR=[]
+  arrayF.push(Math.floor(absR/1000))
+  arrayDiv.forEach(e=>{
+      arrayF.push(Math.floor(absR/e));
+      let rValue=(absR%e);
+      arrayR.push(rValue);
+      absR=rValue;
+    })
+  arrayF.push(Math.floor(arrayR[1]/604800000))//agregar las semanas
+  arrayF.unshift(hoyMenosFecha)//si es - faltan años si es + pasaron
+  return (arrayF)
+  //return [bruto, enSegundos, años, meses, dias, horas, minutos, segundos, semanas]
+}
+
+const $countDownContainer = document.getElementById("relojCountDown"),
+      $inputFechaCountDown=document.getElementById("fechaCountDown"),
+      $btnPlayCountDown=document.getElementById("countDownPlay")
+      fStopCD=_=>{
+        clearInterval(controlCountDown);
+        $countDownContainer.innerHTML=null
+        $btnPlayCountDown.disabled=false;
+        $inputFechaCountDown.disabled=false;
+      },
+      printHTML=(e=>{if(Math.sign(e[0])===-1){
+        return `<h3>Faltan: ${e[2]}A/${e[3]}M/${e[8]}S/${e[4]}D ${e[5]}h:${e[6]}m:${e[7]}s</h3>`}
+        else {return `<h3>Han pasado: ${e[2]}A/${e[3]}M/${e[8]}S/${e[4]}D ${e[5]}h:${e[6]}m:${e[7]}s</h3>`}})
+        
+let controlCountDown;
+
+document.addEventListener("click", (e)=>{
+  if(e.target.matches("#countDownPlay")){
+    let $fecha=new Date($inputFechaCountDown.value)
+    if($fecha===undefined||$fecha===NaN||$fecha.toDateString()==='Invalid Date'){ 
+        alert(`No ingresaste la fecha`)
+    } else {
+        controlCountDown= setInterval(() => {
+          eCD=countDown($fecha)
+          $countDownContainer.innerHTML=printHTML(eCD)
+          if(eCD[1]===0) alert(`Termino`), fStopCD(); 
+        }, 1000);
+        e.target.disabled= true;
+        $inputFechaCountDown.disabled=true;
+    }
+  }
+  if(e.target.matches("#countDownStop")){
+    fStopCD()
+  }
+})
+/////////////////////////////////////////////////////////////////////////////////// Evento Teclado

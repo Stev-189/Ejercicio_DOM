@@ -19,6 +19,14 @@ body{
 p {
   font-size: var(--t-texto--parrafos);
 }
+button{
+  width: 100px;
+  background-color: var(--first-color);
+  color:var(--second-color-rgb);
+  border: 0;
+  margin: 2px;
+  border-radius: 5%;
+}
 /* ///////////////////////////////////////////////////////////////////////////Header */
 header{
   position: sticky;
@@ -167,4 +175,19 @@ body section div{
   margin-top: 10px;
   width: 350px;
   text-align: center;
+}
+/* ///////////////////////////////////////////////////////////////////////////Section 3 Cuenta atras*/
+#countDownContainer{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+#Section_3 input{
+  font-size: var(--t-texto);
+  text-align: center;
+}
+#countDownContainerControl{
+  width: 250px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }

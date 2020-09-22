@@ -23,7 +23,7 @@
     <ul>
       <li><a class="aMenuNav botonPalanca" href="#Section_1">Reloj Digital y alarma Sonora</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_2">Evento Teclado</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_3">Section 3</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_3">Diferencia Tiempo</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_4">Section 4</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_5">Section 5</a></li>
     </ul>
@@ -36,10 +36,10 @@
       </form>
     </div>
     <div id="controlador_reloj" class="container reloj">
-      <button id="button-view-reloj" class="button-reloj">Inicar Reloj</button>
-      <button id="button-view-stop" class="button-reloj">Detener Reloj</button>
-      <button id="button-sound-inicia" class="button-reloj">Iniciar alarma</button>
-      <button id="button-sound-stop" class="button-reloj">Detener alarma</button>
+      <button id="button-view-reloj" class="button-reloj">Inicar<br>Reloj</button>
+      <button id="button-view-stop" class="button-reloj">Detener<br>Reloj</button>
+      <button id="button-sound-inicia" class="button-reloj">Iniciar<br>alarma</button>
+      <button id="button-sound-stop" class="button-reloj">Detener<br>alarma</button>
     </div>
   </section>
   <section id="Section_2" class="section">
@@ -51,7 +51,15 @@
     <p>Para mostrar: Alert <b>(ALT+a)</b>, Prompt <b>(ALT+p)</b>, Confirm <b>(ALT+c)</b></p>
   </section>
   <section id="Section_3" class="section">
-    <h3>Section 3</h3>
+    <h3>Diferencia Tiempo</h3>
+    <div class="countDownContainer" id="countDownContainer">
+      <input type="date" id="fechaCountDown">
+      <div id="countDownContainerControl">
+        <button id="countDownPlay">Iniciar<br>Cuenta</button>
+        <button id="countDownStop">Detener<br>Cuenta</button>
+      </div>
+    </div>
+    <div id="relojCountDown"></div>
   </section>
   <section id="Section_4" class="section">
     <h3>Section 4</h3>
