@@ -13,20 +13,20 @@
   transition-duration: 0.15s;
   transition-timing-function: linear;
   font: inherit;
-  color: inherit;
+  color: (50,51,48);
   text-transform: none;
   background-color: transparent;
   border: 0;
   margin: 0;
   overflow: visible; }
-  .hamburger:hover {
+ /*  .hamburger:hover {
     opacity: 0.7; }
   .hamburger.is-active:hover {
-    opacity: 0.7; }
+    opacity: 0.7; } */
   .hamburger.is-active .hamburger-inner,
   .hamburger.is-active .hamburger-inner::before,
   .hamburger.is-active .hamburger-inner::after {
-    background-color: #000; }
+    background-color: rgb(50,51,48); }
 
 .hamburger-box {
   width: 40px;
@@ -41,7 +41,7 @@
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
     width: 40px;
     height: 4px;
-    background-color: #000;
+    background-color: rgb(50,51,48);
     border-radius: 4px;
     position: absolute;
     transition-property: transform;

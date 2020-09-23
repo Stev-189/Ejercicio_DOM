@@ -9,6 +9,9 @@
 --t-texto--parrafos :20px;
 --bottomPX          :20px;
 }
+*{
+  color: var(--second-color-rgb);
+}
 html{
   scroll-behavior: smooth;
 }
@@ -214,6 +217,7 @@ body section div{
   transition: all .4s;
 }
 
+
 .to-top.active {
   bottom:var(--bottomPX);
   pointer-events: auto;
@@ -221,3 +225,4 @@ body section div{
   background-color: var(--first-color);
   z-index: 999;
 }
+
