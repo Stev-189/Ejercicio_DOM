@@ -8,6 +8,8 @@
 --t-texto-S         :35px;
 --t-texto--parrafos :20px;
 --bottomPX          :20px;
+--b-B-Color         : white;
+--btn-c-DOM-size    :60px
 }
 *{
   color: var(--second-color-rgb);
@@ -18,7 +20,7 @@ html{
 body{
   margin: 0;
   padding: 0;
-  color: var(--second-color-rgb);
+  background-color: var(--b-B-Color);
 }
 p {
   font-size: var(--t-texto--parrafos);
@@ -27,10 +29,17 @@ button{
   width: 100px;
   background-color: var(--first-color);
   color:var(--second-color-rgb);
-  border: 0;
+  border: 1px var(--first-color) solid;
   margin: 2px;
   border-radius: 5%;
+  outline: none;
 }
+button:hover, input:hover, input{
+  border: 1px solid var(--second-color-rgb);
+  outline: none;
+}
+
+
 /* ///////////////////////////////////////////////////////////////////////////Header */
 header{
   position: sticky;
@@ -41,13 +50,19 @@ header{
   background-color: var(--first-color);
   justify-content: center;
   z-index: 998;
-  
 }
 /* ///////////////////////////////////////////////////////////////////////////Funcion */
 .palanca{
   /* right: -100%; */
   transform: translate(-100%,0);
   opacity: 0;
+}
+.hamburger-box:hover, .hamburger-inner:hover, .botonPalancaContainer:hover{
+  border: 0;
+}
+#botonPalancaContainer button:hover{
+  outline: none;
+  border: 0;
 }
 /* ///////////////////////////////////////////////////////////////////////////Menu */
 #menuPalanca{
@@ -114,20 +129,19 @@ nav ul li a:hover{
   z-index: 999;
   bottom: var(--bottomPX);
   right:10px;
-  width: 70px;
-  height: 70px;
+  width: var(--btn-c-DOM-size);
+  height: var(--btn-c-DOM-size);
   border-radius: 50%;
   background-color: var(--first-color);
   display: flex;
-  
 }
 
 #botonPalancaContainer .hamburger{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
-  height: 70px;
+  width: var(--btn-c-DOM-size);
+  height: var(--btn-c-DOM-size);
 }
 
 /* ///////////////////////////////////////////////////////////////////////////Section */
@@ -203,20 +217,19 @@ body section div{
   position: fixed;
   bottom: 16px;
   right:80px;
-  width:70px;
-  height:70px;
+  width:var(--btn-c-DOM-size);
+  height:var(--btn-c-DOM-size);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size:32px;
+  font-size:var(--t-texto-S);
   color:var(--second-color-rgb);
   text-decoration: none;
   opacity:0;
   pointer-events: none;
-  transition: all .4s;
+  transition: opacity .4s, bottom .4s;
 }
-
 
 .to-top.active {
   bottom:var(--bottomPX);
@@ -225,4 +238,26 @@ body section div{
   background-color: var(--first-color);
   z-index: 999;
 }
-
+/* ///////////////////////////////////////////////////////////////////////////Dark-Mode-BTN*/
+.dark-mode-btn{
+  position: fixed;
+  z-index: 999;
+  bottom: var(--bottomPX);
+  left: 10px; /* con calc() permite sumar */
+  width: var(--btn-c-DOM-size);
+  height: var(--btn-c-DOM-size);
+  border-radius: 50%;
+  background-color: var(--first-color);
+  color:var(--second-color);
+  cursor: pointer; 
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+  font-size:var(--t-texto-S);
+  outline: none;
+  
+}
+.dark-mode-btn:hover{
+  outline: none;
+  border: 0;
+}

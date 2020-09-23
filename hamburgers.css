@@ -5,6 +5,21 @@
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
+/*  *:hover{
+  outline: none;
+  border: 0;
+ } */
+ :root{
+  --first-color       :#f0db4f;
+  --alpha-color       : 0.9;
+  --second-color      : 50,51,48;
+  --second-color-rgb  :rgb(var(--second-color));
+  --t-texto           :30px;
+  --t-texto-S         :35px;
+  --t-texto--parrafos :20px;
+  --bottomPX          :20px;
+  --b-B-Color         : white;
+  }
  .hamburger {
   padding: 15px 15px;
   display: inline-block;
@@ -18,15 +33,18 @@
   background-color: transparent;
   border: 0;
   margin: 0;
+  outline: none;
   overflow: visible; }
- /*  .hamburger:hover {
-    opacity: 0.7; }
+  .hamburger:hover {
+    /* opacity: 0,7; */
+    outline: none; }
   .hamburger.is-active:hover {
-    opacity: 0.7; } */
+    /* opacity: 0.7; */ 
+    outline: none;}
   .hamburger.is-active .hamburger-inner,
   .hamburger.is-active .hamburger-inner::before,
   .hamburger.is-active .hamburger-inner::after {
-    background-color: rgb(50,51,48); }
+    background-color: var(--second-color-rgb); }
 
 .hamburger-box {
   width: 40px;
@@ -39,9 +57,9 @@
   top: 50%;
   margin-top: -2px; }
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
+    width: 30px;/* tamaño barras */
     height: 4px;
-    background-color: rgb(50,51,48);
+    background-color: var(--second-color-rgb);
     border-radius: 4px;
     position: absolute;
     transition-property: transform;

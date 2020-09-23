@@ -142,3 +142,20 @@ document.addEventListener("click",(e)=>{
     $hamburger.classList.remove("is-active")//muestra hanburgesa menu
   }
 })
+/////////////////////////////////////////////////////////////////////////////////// Dark Mode
+const $dark_mode = document.getElementById("dark-mode-container")
+document.addEventListener("click",(e)=>{
+  if(e.target.matches("#dark-mode")){
+    $dark_mode.innerHTML=`<button id="dark-mode-active" class="dark-mode-btn">🌔</button>`
+    document.documentElement.style.setProperty('--first-color','#323330')
+    document.documentElement.style.setProperty('--second-color','240,219,79')
+    document.documentElement.style.setProperty('--b-B-Color','#616061')
+  }
+  if(e.target.matches("#dark-mode-active")){
+    $dark_mode.innerHTML=`<button id="dark-mode" class="dark-mode-btn">🌒</button>`
+    document.documentElement.style.setProperty('--first-color','#f0db4f')
+    document.documentElement.style.setProperty('--second-color','50,51,48')
+    document.documentElement.style.setProperty('--b-B-Color','white')
+
+  }
+})
