@@ -171,3 +171,19 @@ document.addEventListener("click",(e)=>{
     darkModeDesActive()
   }
 })
+/////////////////////////////////////////////////////////////////////////////////// responsible responsing designe
+const $contendorYM=document.getElementById('containerYM'),
+      $html360=`<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Ver video</a>
+                <a href="https://goo.gl/maps/eGvKspUq2EjCKYrk6">Ver Mapa</a>`,
+      $htmlOther=`<iframe width="580" height="326" src="https://www.youtube-nocookie.com/embed/9NcPvmk4vfo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.264447109022!2d-73.40895145990422!3d-50.943108142288374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbda51b0183dbaf07%3A0xbd9f2657451ace58!2sParque%20Nacional%20Torres%20del%20Paine!5e0!3m2!1ses!2scl!4v1600957662309!5m2!1ses!2scl" width="580" height="326" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`
+function rRDjs(){
+  let widthSize=window.matchMedia("(max-width: 360px)")
+  console.log(widthSize.matches)
+  if(widthSize.matches){
+    $contendorYM.innerHTML=$html360
+  } else{
+    $contendorYM.innerHTML=$htmlOther
+  }
+}
+document.addEventListener("DOMContentLoaded",rRDjs);

@@ -38,7 +38,9 @@ button:hover, input:hover, input{
   border: 1px solid var(--second-color-rgb);
   outline: none;
 }
-
+h1,h2,h3,h4,h5{
+  text-align: center;
+}
 
 /* ///////////////////////////////////////////////////////////////////////////Header */
 header{
@@ -255,9 +257,19 @@ body section div{
   transition: all 0.3s ease-out;
   font-size:var(--t-texto-S);
   outline: none;
-  
 }
 .dark-mode-btn:hover{
   outline: none;
   border: 0;
+}
+
+#containerYM{
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+#containerYM *{
+  margin-top: 50px;
 }
