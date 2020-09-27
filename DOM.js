@@ -194,3 +194,32 @@ window.addEventListener("resize",()=>{
   if(wsize && Psize) rRDjs()
   if(!wsize && !Psize) rRDjs()
 });
+/////////////////////////////////////////////////////////////////////////////////// Section 5 Responsive Tester
+const $url=document.getElementById('v-url'),
+      $alto=document.getElementById('v-alto'),
+      $ancho=document.getElementById('v-ancho'),
+      $form=document.getElementById('form'),
+      $btnCerrar=document.getElementById('ceVent'),
+      vaForm=(e)=>{
+        if(e===""||e===undefined||e===NaN) return false,console.log('vacio')
+        if(typeof e ==='string'&&(/^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/ig.test(e))) return true
+        if(typeof e==='number' &&(/^[0-9]{1,4}$/g.test(e))) return true
+        return false
+      }
+      let ventana;
+$form.addEventListener('submit',(e)=>{
+  if(vaForm($url.value)&&vaForm(parseInt($alto.value))&&vaForm(parseInt($ancho.value))){
+      ventana=window.open($url.value,'',`width=${$ancho}`,`height=${$alto}`)
+      e.preventDefault()
+    } else {
+      alert(`revisar los parametros de url, altura y ancho`)
+      e.preventDefault()
+    }
+    e.preventDefault()
+})
+$btnCerrar.addEventListener("click",e=>{
+  ventana.close()
+  $url.value=""
+  $alto.value=""
+  $ancho.value=""
+})
