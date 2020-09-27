@@ -294,3 +294,9 @@ body section div{
 #Section_5 #downForm{
   margin-top: 20px;
 }
+/* ///////////////////////////////////////////////////////////////////////////Section 6 Deteccion de dispositivos (User Agent)*/
+#user-device{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

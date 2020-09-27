@@ -223,3 +223,60 @@ $btnCerrar.addEventListener("click",e=>{
   $alto.value=""
   $ancho.value=""
 })
+/////////////////////////////////////////////////////////////////////////////////// Section 6 Deteccion de dispositivos (User Agent)
+const $idDiv=document.getElementById('user-device')
+document.addEventListener("DOMContentLoaded",(e)=>{
+  isMobile={
+    android:()=>navigator.userAgent.match(/android/i),
+    ios:()=>navigator.userAgent.match(/iphone|ipad|ipod/i),
+    windows:()=>navigator.userAgent.match(/windows phone/i),
+    any:function(){
+      return this.android()||this.ios()||this.windows();
+    }
+  },
+  isDesktop={
+    linux:()=>navigator.userAgent.match(/linux/i),
+    mac:()=>navigator.userAgent.match(/mac os/i),
+    windows:()=>navigator.userAgent.match(/windows nt/i),
+    any:function(){
+      return this.linux()||this.mac()||this.windows();
+    }
+  },
+  isBrowser={
+    chrome:()=>navigator.userAgent.match(/chrome/i),
+    safarai:()=>navigator.userAgent.match(/safarai/i),
+    firefox:()=>navigator.userAgent.match(/firefox/i),
+    opera:()=>navigator.userAgent.match(/opera|opera mini/i),
+    ie:()=>navigator.userAgent.match(/msie|iemobile/i),
+    edge:()=>navigator.userAgent.match(/edge/i),
+    any:function(){
+      return(
+        this.ie()||
+        this.edge()||
+        this.chrome()||
+        this.safarai()||
+        this.firefox()||
+        this.opera()
+      );
+    }
+  }
+  $idDiv.innerHTML=`
+  <ul>
+      <li>User agent: <b>${navigator.userAgent}</b></li>
+      <li>Plataforma: <b>${isMobile.any()? isMobile.any():isDesktop.any()}</b></li>
+      <li>Navegador: <b>${isBrowser.any()}</b></li>
+  </ul>
+  `;
+//Contenido exclusivo
+  if(isBrowser.chrome()){
+    $idDiv.innerHTML+=`<p><mark>Este contenido es exclusivo Chrome</mark></p>`
+  }
+  if(isBrowser.firefox()){
+    $idDiv.innerHTML+=`<p><mark>Este contenido es exclusivo Firefox</mark></p>`
+  }
+//redireccionando
+  if(isMobile.android()){
+    let option = confirm(`Estas desde Android, quieres abrir el github`)
+    if(option)window.location.href='https://github.com/Stev-189/Ejercicio_DOM'
+  }
+})
