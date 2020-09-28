@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded",(e)=>{
 })
 
 /////////////////////////////////////////////////////////////////////////////////// Status Conexion
-///https://www.youtube.com/watch?v=hIaGzJ3txqM
+///https://www.youtube.com/watch?v=hIaGzJ3txqM //https://www.freecodecamp.org/news/how-to-check-internet-connection-status-with-javascript/
 const $sCon=document.getElementById('sConexion')
 //funcion para enviar info a HTML
 const toHTMLRed=((e, c, str)=>{
@@ -326,4 +326,37 @@ window.addEventListener("offline", (e) => {
 window.addEventListener("online", (e) => {
   navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
 });
+///////////////////////////////////////////////////////////////////////////////////Section 7 Deteccion de dispositivo (Camara)
+let statusV=false//control del estadod le video
+  const capVideo=async(e,$btn,$cV,$btnS)=>{
+    let stream,
+        cVideo=document.querySelector($cV)
+    if(!statusV){
+      if(e.target.matches($btn)){
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                          audio: true,
+                          video: true
+                        })
+            cVideo.srcObject = stream
+            statusV=true
+            cVideo.removeAttribute('hidden')
+            } catch (error) {
+            alert(`NO SE PUDO REALIZAR CONEXION A DISPOSITIVO
+${error.name} `)
+            track.error(error)
+            }
+      }
+    }
+    if(e.target.matches($btnS)){
+      if(statusV){
+      let tracks = cVideo.srcObject.getTracks();
+      tracks.forEach(q=>q.stop());
+      cVideo.srcObject = null;
+      cVideo.setAttribute('hidden','true')
+      statusV=false
+      }
+    }
+  } 
 
+document.addEventListener('click',e=>capVideo(e,'#initVid','#vContainer','#stopVid'))

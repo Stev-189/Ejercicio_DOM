@@ -322,3 +322,13 @@ body section div{
   top:0;
   transform: translate(0,-100%);
 }
+/* ///////////////////////////////////////////////////////////////////////////Section 7 Deteccion de dispositivo (Camara)*/
+#Section_7{
+  display: flex;
+  flex-direction: column;
+}
+video{
+  margin: 10px auto;
+  width: 60%;
+  min-width: 400px;
+}

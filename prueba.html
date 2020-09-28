@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>camara</title>
+</head>
+<body>
+  <button id='initVid'>Get access to camera</button>
+  <button id='stopVid'>Stop Streaming</button>
+  <video id='vContainer' autoplay controls></video>
+
+</body>
+<script>
+  let statusV=false//control del estadod le video
+  const capVideo=async(e,$btn,$cV,$btnS)=>{
+    let stream,
+        cVideo=document.querySelector($cV)
+    if(!statusV){
+      if(e.target.matches($btn)){
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                          audio: true,
+                          video: true
+                        })
+            cVideo.srcObject = stream
+            statusV=true
+            } catch (error) {
+            alert(`${error.name}`)
+            track.error(error)
+            }
+      }
+    }
+    if(e.target.matches($btnS)){
+      if(statusV){
+      let tracks = cVideo.srcObject.getTracks();
+      tracks.forEach(q=>q.stop());
+      cVideo.srcObject = null;
+      statusV=false
+      }
+    }
+  } 
+
+document.addEventListener('click',e=>capVideo(e,'#initVid','#vContainer','#stopVid'))
+
+
+</script>
+</html>
