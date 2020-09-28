@@ -292,7 +292,7 @@ const toHTMLRed=((e, c, str)=>{
   setTimeout(() => {
     e.classList.remove(c)
     e.innerHTML=``;
-  }, 1000);
+  }, 3000);
 })
 
 //funcion asincrona de espera des respuesta confirmando conexion
