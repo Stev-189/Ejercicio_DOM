@@ -280,3 +280,50 @@ document.addEventListener("DOMContentLoaded",(e)=>{
     if(option)window.location.href='https://github.com/Stev-189/Ejercicio_DOM'
   }
 })
+
+/////////////////////////////////////////////////////////////////////////////////// Status Conexion
+///https://www.youtube.com/watch?v=hIaGzJ3txqM
+const $sCon=document.getElementById('sConexion')
+//funcion para enviar info a HTML
+const toHTMLRed=((e, c, str)=>{
+  e.classList.remove()
+  e.innerHTML=`<h3>Conexion ${str}</h3>`;
+  e.classList.add(c);
+  setTimeout(() => {
+    e.classList.remove(c)
+    e.innerHTML=``;
+  }, 1000);
+})
+
+//funcion asincrona de espera des respuesta confirmando conexion
+const checkOnlineStatus = async () => {
+  try {
+    let online = await fetch("https://randomuser.me/api/");//se solicta una respuetsa a una busqueda
+    return online.status >= 200 && online.status < 300;//200 a 299 estatus conexion
+  } catch (err) {
+    return false; 
+  }
+};
+//verifica el estatus de la red
+const inRed =async (e)=>{
+  let online =await checkOnlineStatus();
+  if(online)toHTMLRed(e,'inConextion','establecida');
+  if(!online)toHTMLRed(e,'offConexion','perdida');
+}
+// para verificar correctamente el status de connecion de internet es necesario verificar un fetch a un requerimiento
+//pero no lo puede hacer funcionar ademas que las funciones deben ser llmadas por asincronas
+window.addEventListener("load", inRed($sCon))
+window.addEventListener("offline", inRed($sCon))
+window.addEventListener("online", inRed($sCon))
+
+//sino funciona la anerior simplemente ocupar window add event listenner
+/* window.addEventListener("load", (e) => {
+  navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
+});
+window.addEventListener("offline", (e) => {
+  navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
+});
+window.addEventListener("online", (e) => {
+  navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
+});
+ */
