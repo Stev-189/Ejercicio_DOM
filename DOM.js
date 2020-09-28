@@ -312,12 +312,12 @@ const inRed =async (e)=>{
 }
 // para verificar correctamente el status de connecion de internet es necesario verificar un fetch a un requerimiento
 //pero no lo puede hacer funcionar ademas que las funciones deben ser llmadas por asincronas
-window.addEventListener("load", inRed($sCon))
-window.addEventListener("offline", inRed($sCon))
-window.addEventListener("online", inRed($sCon))
-
+//window.addEventListener("load", inRed($sCon))
+//window.addEventListener("offline", inRed($sCon))
+//window.addEventListener("online", inRed($sCon))
 //sino funciona la anerior simplemente ocupar window add event listenner
-/* window.addEventListener("load", (e) => {
+
+window.addEventListener("load", (e) => {
   navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
 });
 window.addEventListener("offline", (e) => {
@@ -326,4 +326,4 @@ window.addEventListener("offline", (e) => {
 window.addEventListener("online", (e) => {
   navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
 });
- */
+
