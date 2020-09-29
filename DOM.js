@@ -327,7 +327,7 @@ window.addEventListener("online", (e) => {
   navigator.onLine?toHTMLRed($sCon,'inConextion','establecida'):toHTMLRed($sCon,'offConexion','perdida')
 });
 ///////////////////////////////////////////////////////////////////////////////////Section 7 Deteccion de dispositivo (Camara)
-let statusV=false//control del estadod le video
+let statusV=false//control del estado del video
   const capVideo=async(e,$btn,$cV,$btnS)=>{
     let stream,
         cVideo=document.querySelector($cV)
@@ -344,17 +344,17 @@ let statusV=false//control del estadod le video
             } catch (error) {
             alert(`NO SE PUDO REALIZAR CONEXION A DISPOSITIVO
 ${error.name} `)
-            track.error(error)
+            /* track.error(error) */
             }
       }
     }
     if(e.target.matches($btnS)){
       if(statusV){
-      let tracks = cVideo.srcObject.getTracks();
-      tracks.forEach(q=>q.stop());
-      cVideo.srcObject = null;
-      cVideo.setAttribute('hidden','true')
-      statusV=false
+        let tracks = cVideo.srcObject.getTracks();
+        tracks.forEach(q=>q.stop());
+        cVideo.srcObject = null;
+        cVideo.setAttribute('hidden','true')
+        statusV=false
       }
     }
   } 
