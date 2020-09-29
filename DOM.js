@@ -360,3 +360,36 @@ ${error.name} `)
   } 
 
 document.addEventListener('click',e=>capVideo(e,'#initVid','#vContainer','#stopVid'))
+///////////////////////////////////////////////////////////////////////////////////Section 8 Geoposicionamiento
+let geoTHTML
+ function loadLocation (e) {
+   geoTHTML=e
+ navigator.geolocation.getCurrentPosition(viewMap,ViewError,{timeout:1000});
+}
+
+function viewMap (pos) {
+  const $conGeo=document.getElementById(geoTHTML)
+	let lon = pos.coords.longitude;	//guardamos la longitud
+	let lat = pos.coords.latitude;		//guardamos la latitud
+  let link = "http://maps.google.com/?ll="+lat+","+lon+"&z=16";
+  if(!document.getElementById(`${geoTHTML}Div`)){
+    $conGeo.insertAdjacentHTML('afterend',
+     `<div id=${geoTHTML}Div>
+        <label>Longitud: ${lon}</label>
+        <label>Latitud: ${lat}</label>
+        <a href="${link}" target="_blank">Enlace al mapa</a>
+      </div>`
+    )}
+  setTimeout(() => {
+    if(document.getElementById(`${geoTHTML}Div`)){
+      let nodoPadre = document.getElementById(`${geoTHTML}Div`).parentNode;
+		  nodoPadre.removeChild(document.getElementById(`${geoTHTML}Div`));
+    }
+  }, 10000);
+  }
+
+function ViewError(err){alert(err)}	
+
+document.addEventListener('click',e=>{
+  if(e.target.matches('#btnGeo'))loadLocation('btnGeo')
+})

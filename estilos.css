@@ -121,6 +121,10 @@ nav ul li a:hover{
   padding-top:80px;
   width: 100%;
   height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
 }
 .section h3{
   width: 100%;
@@ -172,11 +176,6 @@ body section div{
   display: none;
 }
 /* ///////////////////////////////////////////////////////////////////////////Section 2 Evento teclado*/
-#Section_2{
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-}
 #mapa{
   width: 95%;
   height: 70%;
@@ -323,12 +322,16 @@ body section div{
   transform: translate(0,-100%);
 }
 /* ///////////////////////////////////////////////////////////////////////////Section 7 Deteccion de dispositivo (Camara)*/
-#Section_7{
-  display: flex;
-  flex-direction: column;
-}
 video{
   margin: 10px auto;
   width: 60%;
   min-width: 400px;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////Section 8 Geoposicionamiento */
+#Section_8 div{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
 }
