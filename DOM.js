@@ -364,22 +364,24 @@ document.addEventListener('click',e=>capVideo(e,'#initVid','#vContainer','#stopV
 let geoTHTML
  function loadLocation (e) {
    geoTHTML=e
- navigator.geolocation.getCurrentPosition(viewMap,ViewError,{timeout:1000});
+ navigator.geolocation.getCurrentPosition(viewMap,ViewError,{timeout:5000,enableHighAccuracy:true});//,maximumAge:0
 }
 
 function viewMap (pos) {
   const $conGeo=document.getElementById(geoTHTML)
-	let lon = pos.coords.longitude;	//guardamos la longitud
-	let lat = pos.coords.latitude;		//guardamos la latitud
+	let lon = pos.coords.longitude,	//guardamos la longitud
+      lat = pos.coords.latitude,		//guardamos la latitud
+      pre = pos.coords.accuracy
   let link = "http://maps.google.com/?ll="+lat+","+lon+"&z=16";
   if(!document.getElementById(`${geoTHTML}Div`)){
     $conGeo.insertAdjacentHTML('afterend',
      `<div id=${geoTHTML}Div>
         <label>Longitud: ${lon}</label>
         <label>Latitud: ${lat}</label>
-        <a href="${link}" target="_blank">Enlace al mapa</a>
+        <label>Precision: ${pre}m</label>
+        <a href="${link}" target="_blank" rel="noopener">Enlace al mapa</a>
       </div>`
-    )}
+    )
   setTimeout(() => {
     if(document.getElementById(`${geoTHTML}Div`)){
       let nodoPadre = document.getElementById(`${geoTHTML}Div`).parentNode;
@@ -387,6 +389,7 @@ function viewMap (pos) {
     }
   }, 10000);
   }
+}
 
 function ViewError(err){alert(err)}	
 
