@@ -269,10 +269,10 @@ document.addEventListener("DOMContentLoaded",(e)=>{
   `;
 //Contenido exclusivo
   if(isBrowser.chrome()){
-    $idDiv.innerHTML+=`<p><mark>Este contenido es exclusivo Chrome</mark></p>`
+    $idDiv.innerHTML+=`<p>Este contenido es exclusivo Chrome</p>`
   }
   if(isBrowser.firefox()){
-    $idDiv.innerHTML+=`<p><mark>Este contenido es exclusivo Firefox</mark></p>`
+    $idDiv.innerHTML+=`<p>Este contenido es exclusivo Firefox</p>`
   }
 //redireccionando
   if(isMobile.android()){
