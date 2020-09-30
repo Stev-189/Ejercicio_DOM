@@ -4,42 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geposicionamiento</title>
+  <style>
+    :root{
+      --yellow-color:#f7df1e;
+      --dark-color: #222;
+    }
+    .card{
+      display: inline-block;
+      background-color: var(--dark-color);
+      color:var(--yellow-color)
+    }
+    .card figcaption{
+      padding:1rem;
+      text-align: center;
+    }
+    div{
+      border: solid 5px red;
+    }
+    .fHidden{
+      display: none;
+    }
+
+  </style>
 </head>
 <body>
-  <button id="btnGeo">Ubicar<br>Geoposicion</button>
+  <button id="btnIFiltro">Iniciar<br>Filtro</button>
 </body>
 <script>
-let geoTHTML
- function loadLocation (e) {
-   geoTHTML=e
- navigator.geolocation.getCurrentPosition(viewMap,ViewError,{timeout:1000});
-}
+let arrayApi=['Tech','Animals','People','Arch','Nature','Animals','People','Arch','Nature'],
+   $intBuscar=document,
+   comp=false,
+   $contDiv
 
-function viewMap (pos) {
-  const $conGeo=document.getElementById(geoTHTML)
-	let lon = pos.coords.longitude;	//guardamos la longitud
-	let lat = pos.coords.latitude;		//guardamos la latitud
-  let link = "http://maps.google.com/?ll="+lat+","+lon+"&z=16";
-  if(!document.getElementById(`${geoTHTML}Div`)){
-    $conGeo.insertAdjacentHTML('afterend',
-     `<div id=${geoTHTML}Div>
-        <label>Longitud: ${lon}<br></label>
-        <label>Latitud: ${lat}<br></label>
-        <a href="${link}" target="_blank">Enlace al mapa</a>
-      </div>`
-    )}
-  setTimeout(() => {
-    if(document.getElementById(`${geoTHTML}Div`)){
-      let nodoPadre = document.getElementById(`${geoTHTML}Div`).parentNode;
-		  nodoPadre.removeChild(document.getElementById(`${geoTHTML}Div`));
-    }
-  }, 10000);
-  }
+const addElement=(e,arr)=>{
+  let container=document.getElementById(e)
+  arr.forEach((e,n)=>{ let {titulo, link}=e
+    container.insertAdjacentHTML('beforeend',
+      ` <figure class="card ${titulo.toLocaleLowerCase()}">
+          <img src="${link}" alt="${titulo}">
+          <figcaption>${titulo}</figcaption>
+        </figure>` 
+    )})}
 
-function ViewError(err){alert(err)}	
+function simularApi(e){
+  if(!document.getElementById(`${e}Div`)){
+    let rAApi=[]
+    const $conEl=document.getElementById(e)
+    arrayApi.forEach(e=>rAApi.push({titulo:e,link:`https://placeimg.com/200/200/${e.toLocaleLowerCase()}`}))
+    $conEl.insertAdjacentHTML('afterend',`<div id=${e}Div></div>`)
+    $conEl.insertAdjacentHTML('afterend',`<input type="text" id=${e}Input placeholder='Ingrese elemento a buscar' >`)
+    comp=`${e}Input`
+    $intBuscar=document.getElementById(`${e}Input`)
+    $contDiv=document.getElementById(`${e}Div`)
+    addElement(`${e}Div`,rAApi)
+  }}
+  
+$intBuscar.addEventListener("keyup",(e)=>{
+  let $class=$contDiv.querySelectorAll('.card'),
+  regex=RegExp(e.target.value,'i')
+  if(comp===e.target.id){
+    if(e.target.value.length===0){
+      $class.forEach(e=>e.classList.remove('fHidden'))
+    } else{
+      $class.forEach(e=>regex.test(e.classList[1])
+        ?e.classList.remove('fHidden')
+        :e.classList.add('fHidden'))
+    }}})
 
 document.addEventListener('click',e=>{
-  if(e.target.matches('#btnGeo'))loadLocation('btnGeo')
+  if(e.target.matches('#btnIFiltro'))simularApi(e.target.id)
 })
 </script>
 </html>

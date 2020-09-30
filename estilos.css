@@ -41,6 +41,12 @@ button:hover, input:hover, input{
 h1,h2,h3,h4,h5{
   text-align: center;
 }
+input{
+  background-color: var(--b-B-Color);
+}
+input::placeholder{
+  color:rgba(var(--second-color),var(--alpha-color));
+}
 
 /* ///////////////////////////////////////////////////////////////////////////Header */
 header{
@@ -335,3 +341,45 @@ video{
   text-align: center;
   margin-top: 20px;
 }
+/* ///////////////////////////////////////////////////////////////////////////////////Section 9 Buscar */
+#Section_9 h3 {
+  margin-bottom:0;
+}
+#Section_9 div{
+  border: 2px solid var(--second-color-rgb);
+  display:flex;
+  flex-wrap: wrap;
+  width: 90%;
+  align-items: flex-start;
+  /* margin-bottom: 10px; */
+  overflow-y: auto;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+#btnIFiltro{
+  margin:1% auto;
+}
+#btnIFiltroInput{
+  width: 300px;
+  height: 25px;
+  text-align: center;
+  margin-bottom: 1%;
+}
+.card{
+  margin: 1% 1rem;
+}
+.card img{
+  display: block;
+}
+.card figcaption{
+  padding:1rem;
+  text-align: center;
+  background-color: var(--second-color-rgb);
+  color:var(--first-color);
+  margin:0;
+  border:none;
+}
+.fHidden{
+  display: none;
+}
+
