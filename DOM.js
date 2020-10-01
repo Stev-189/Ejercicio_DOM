@@ -426,6 +426,7 @@ function simularApi(e){
   }}
   
 $intBuscar.addEventListener("keyup",(e)=>{
+  if(e.key==='Escape') e.target.value=''
   let $class=$contDiv.querySelectorAll('.card'),
   regex=RegExp(e.target.value,'i')
   if(comp===e.target.id){

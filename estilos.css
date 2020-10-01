@@ -367,6 +367,7 @@ video{
 }
 .card{
   margin: 1% 1rem;
+  transition: all 0.3s ease-out;
 }
 .card img{
   display: block;
@@ -380,6 +381,9 @@ video{
   border:none;
 }
 .fHidden{
-  display: none;
+  /* display: none; //esta propiedad no s epuede animar*/
+  visibility: hidden;
+  opacity: 0;
+  order: 1;
 }
 
