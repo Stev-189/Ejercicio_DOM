@@ -5,74 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geposicionamiento</title>
   <style>
-    :root{
-      --yellow-color:#f7df1e;
-      --dark-color: #222;
-    }
-    .card{
-      display: inline-block;
-      background-color: var(--dark-color);
-      color:var(--yellow-color)
-    }
-    .card figcaption{
-      padding:1rem;
-      text-align: center;
-    }
-    div{
-      border: solid 5px red;
-    }
-    .fHidden{
-      display: none;
-    }
-
   </style>
 </head>
 <body>
-  <button id="btnIFiltro">Iniciar<br>Filtro</button>
+  
+  <article>
+    <div id="divSorteoCont">
+      <button id="btnAddToSorteo">Agregar<br>al sorteo</button>
+      <button id="btnReiniciarSorteo">Reiniciar</button>
+    </div>
+    <input type="text" name="" id="inputTSorteo" placeholder="Ingresa Opcion al sorteo">
+    <button id="btnWinSorteo">Ganador</button>
+    <ul id="ilContSort"></ul>
+  </article>
+
 </body>
 <script>
-let arrayApi=['Tech','Animals','People','Arch','Nature','Animals','People','Arch','Nature'],
-   $intBuscar=document,
-   comp=false,
-   $contDiv
 
-const addElement=(e,arr)=>{
-  let container=document.getElementById(e)
-  arr.forEach((e,n)=>{ let {titulo, link}=e
-    container.insertAdjacentHTML('beforeend',
-      ` <figure class="card ${titulo.toLocaleLowerCase()}">
-          <img src="${link}" alt="${titulo}">
-          <figcaption>${titulo}</figcaption>
-        </figure>` 
-    )})}
+const arrSort=[],
+      clearIATSF=e=>document.getElementById(e).value='',
+      clearArrSort=_=>arrSort.splice(0,arrSort.length),
+      aLiSorteo=(ul,v)=>document.getElementById(ul).insertAdjacentHTML('beforeend',`<li>${v}</li>`),
+      anyToLiSort=(ul,m)=>document.getElementById(ul).innerHTML=m;
 
-function simularApi(e){
-  if(!document.getElementById(`${e}Div`)){
-    let rAApi=[]
-    const $conEl=document.getElementById(e)
-    arrayApi.forEach(e=>rAApi.push({titulo:e,link:`https://placeimg.com/200/200/${e.toLocaleLowerCase()}`}))
-    $conEl.insertAdjacentHTML('afterend',`<div id=${e}Div></div>`)
-    $conEl.insertAdjacentHTML('afterend',`<input type="text" id=${e}Input placeholder='Ingrese elemento a buscar' >`)
-    comp=`${e}Input`
-    $intBuscar=document.getElementById(`${e}Input`)
-    $contDiv=document.getElementById(`${e}Div`)
-    addElement(`${e}Div`,rAApi)
-  }}
-  
-$intBuscar.addEventListener("keyup",(e)=>{
-  let $class=$contDiv.querySelectorAll('.card'),
-  regex=RegExp(e.target.value,'i')
-  if(comp===e.target.id){
-    if(e.target.value.length===0){
-      $class.forEach(e=>e.classList.remove('fHidden'))
-    } else{
-      $class.forEach(e=>regex.test(e.classList[1])
-        ?e.classList.remove('fHidden')
-        :e.classList.add('fHidden'))
-    }}})
+function reinSorteo(e,ul){
+  clearIATSF(e)
+  clearArrSort()
+  anyToLiSort(ul,``)
+}
+
+function vStringATSF(e){
+    if(!e) return {check:false, message:`El campo esta vacio`};
+    if(typeof e!=='string') return {check:false, message:`No es un texto`};
+    return {check:true, message:`ok`};
+  }
+
+function addToSorteoF(e,ul){
+  let $intSValue=document.getElementById(e).value,
+      {check,message}=vStringATSF($intSValue);
+  if(check){
+    arrSort.push($intSValue);
+    aLiSorteo(ul,$intSValue)
+    clearIATSF(e);
+  } else {alert(message)}
+}
+
+function winSorteo(e,ul){
+  if(arrSort.length!==0){
+    let result = arrSort[Math.round(Math.random()*(arrSort.length-1))]
+    anyToLiSort(ul,`<h3>El ganador es: ${result}</h3>`)
+    setTimeout(() => {
+      reinSorteo(e,ul)
+    }, 10000);
+  } else {alert(`No hay elemntos para participar en le sorteo`)}
+}
 
 document.addEventListener('click',e=>{
-  if(e.target.matches('#btnIFiltro'))simularApi(e.target.id)
+  if(e.target.matches('#btnAddToSorteo'))addToSorteoF('inputTSorteo','ilContSort')
+  if(e.target.matches('#btnReiniciarSorteo'))reinSorteo('inputTSorteo','ilContSort')
+  if(e.target.matches('#btnWinSorteo'))winSorteo('inputTSorteo','ilContSort')
 })
+
 </script>
 </html>

@@ -76,21 +76,21 @@ header{
 #menuPalanca{
   position: fixed;
   width: 100vw;
+  bottom: 0;
+  align-items: center;
   height: 100vh;
   background-color: rgba(var(--second-color),var(--alpha-color));
   top: 0;
-  bottom: 0;
-  align-items: center;
   transition: transform 0.5s ease, opacity 0.3s ease;
   opacity: 1;
   z-index: 998;
+  /* overflow-y: auto; */
 }
 nav ul{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: inherit;
   justify-content: space-evenly;
   margin: 0;
   padding: 0;
@@ -386,4 +386,17 @@ video{
   opacity: 0;
   order: 1;
 }
-
+/* ///////////////////////////////////////////////////////////////////////////////////Section 10 Random win */
+#secSorteo{
+  display: inline-flex;
+  flex-direction: column;
+ margin: 0 auto;
+  align-items: center;
+}
+#secSorteo input{
+  width: 300px;
+  height: 25px;
+  text-align: center;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}

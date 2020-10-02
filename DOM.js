@@ -427,9 +427,9 @@ function simularApi(e){
   
 $intBuscar.addEventListener("keyup",(e)=>{
   if(e.key==='Escape') e.target.value=''
-  let $class=$contDiv.querySelectorAll('.card'),
-  regex=RegExp(e.target.value,'i')
   if(comp===e.target.id){
+    let $class=$contDiv.querySelectorAll('.card'),
+        regex=RegExp(e.target.value,'i')
     if(e.target.value.length===0){
       $class.forEach(e=>e.classList.remove('fHidden'))
     } else{
@@ -440,4 +440,55 @@ $intBuscar.addEventListener("keyup",(e)=>{
 
 document.addEventListener('click',e=>{
   if(e.target.matches('#btnIFiltro'))simularApi(e.target.id)
+})
+///////////////////////////////////////////////////////////////////////////////////Section 10 Random win
+
+const arrSort=[],
+      clearIATSF=e=>document.getElementById(e).value='',
+      clearArrSort=_=>arrSort.splice(0,arrSort.length),
+      aLiSorteo=(ul,v)=>document.getElementById(ul).insertAdjacentHTML('beforeend',`<li>${v}</li>`),
+      anyToLiSort=(ul,m)=>document.getElementById(ul).innerHTML=m;
+
+function reinSorteo(e,ul){
+  clearIATSF(e)
+  clearArrSort()
+  anyToLiSort(ul,``)
+}
+
+function vStringATSF(e){
+    if(!e) return {check:false, message:`El campo esta vacio`};
+    if(typeof e!=='string') return {check:false, message:`No es un texto`};
+    return {check:true, message:`ok`};
+  }
+
+function addToSorteoF(e,ul){
+  let $intSValue=document.getElementById(e).value,
+      {check,message}=vStringATSF($intSValue);
+  if(check){
+    arrSort.push($intSValue);
+    aLiSorteo(ul,$intSValue)
+    clearIATSF(e);
+  } else {alert(message)}
+}
+
+const sSorteando=(ul)=>{
+  let result = arrSort[Math.round(Math.random()*(arrSort.length-1))]
+  anyToLiSort(ul,`<h3>El ganador es: ${result}</h3>`)
+  return result;
+}
+
+function winSorteo(e,ul){
+  if(arrSort.length!==0){
+    let r= sSorteando(ul)
+    setTimeout(() => {
+      let rCon=confirm(`El resultado fue ${r}\n¿Sortear nuevamente?`)
+      if(rCon){winSorteo(e,ul)} else {reinSorteo(e,ul)}
+    }, 5000);
+  } else {alert(`No hay elemntos para participar en le sorteo`)}
+}
+
+document.addEventListener('click',e=>{
+  if(e.target.matches('#btnAddToSorteo'))addToSorteoF('inputTSorteo','ilContSort')
+  if(e.target.matches('#btnReiniciarSorteo'))reinSorteo('inputTSorteo','ilContSort')
+  if(e.target.matches('#btnWinSorteo'))winSorteo('inputTSorteo','ilContSort')
 })
