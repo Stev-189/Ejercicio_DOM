@@ -442,7 +442,6 @@ document.addEventListener('click',e=>{
   if(e.target.matches('#btnIFiltro'))simularApi(e.target.id)
 })
 ///////////////////////////////////////////////////////////////////////////////////Section 10 Random win
-
 const arrSort=[],
       clearIATSF=e=>document.getElementById(e).value='',
       clearArrSort=_=>arrSort.splice(0,arrSort.length),
@@ -491,4 +490,56 @@ document.addEventListener('click',e=>{
   if(e.target.matches('#btnAddToSorteo'))addToSorteoF('inputTSorteo','ilContSort')
   if(e.target.matches('#btnReiniciarSorteo'))reinSorteo('inputTSorteo','ilContSort')
   if(e.target.matches('#btnWinSorteo'))winSorteo('inputTSorteo','ilContSort')
+})
+///////////////////////////////////////////////////////////////////////////////////Section 11 Slider
+function ordSlider(nowNumber,sUlt){
+  if(sUlt+1===1) return[nowNumber,nowNumber,nowNumber];
+  if(nowNumber===sUlt)return[nowNumber-1,nowNumber,0];
+  if(nowNumber===0)return[sUlt,nowNumber,nowNumber+1];
+  else return[nowNumber-1,nowNumber,nowNumber+1];
+}
+
+function sliderArr(arr,sUlt,idbtn){
+  let nArr=[], pArr, arrObj=[]
+  arr.forEach(e=>nArr.push(`slide${e}`))// nombre dle id de los img
+  if(idbtn==='btnRight'){
+    pArr=ordSlider(arr[2],sUlt)
+    nArr.push(`slide${pArr[2]}`)// nombre dle id de los img
+    arrObj=[
+      {n:nArr[0], r:'sliderLeft',a:'sliderNone'},//importante los nombres de ubicaciones d elso slider
+      {n:nArr[1], r:'sliderView',a:'sliderLeft'},
+      {n:nArr[2], r:'sliderRight',a:'sliderView'},
+      {n:nArr[3], r:'sliderNone',a:'sliderRight'}
+    ]}
+  if(idbtn==='btnLeft'){
+    pArr=ordSlider(arr[0],sUlt)
+    nArr.unshift(`slide${pArr[0]}`)// nombre dle id de los img
+    arrObj=[
+      {n:nArr[0], r:'sliderNone',a:'sliderLeft'},
+      {n:nArr[1], r:'sliderLeft',a:'sliderView'},
+      {n:nArr[2], r:'sliderView',a:'sliderRight'},
+      {n:nArr[3], r:'sliderRight',a:'sliderNone'}
+    ]}
+    arrObj.forEach(e=>{
+      document.querySelector(`#${e.n}`).classList.remove(e.r)
+      document.querySelector(`#${e.n}`).classList.add(e.a)
+    })
+}
+
+function slideActual(slider,view,idbtn){
+  let $slider=document.querySelectorAll(slider),
+      sUlt=$slider.length-1,
+      nowNumber='',
+      arr
+  $slider.forEach(e=>{if(e.classList[1]===view)nowNumber=parseInt(e.id.charAt(5),10)})
+  arr=ordSlider(nowNumber,sUlt)
+  sliderArr(arr,sUlt,idbtn)
+}
+
+setInterval(() => {
+  slideActual('.slider','sliderView','btnRight')
+}, 5000);
+
+document.addEventListener('click',e=>{
+if(e.target.matches('#btnRight')||e.target.matches('#btnLeft')){slideActual('.slider','sliderView',e.target.id)}
 })
