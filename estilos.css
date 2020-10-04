@@ -401,16 +401,21 @@ video{
   margin-top: 2%;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////Section 11 Slider */
+
 .sliderContainer{
   max-height: 600px;
   max-width: 800px;
-  width: 100%;
+  width: 90%;
   height: 70vh;
   position: relative;
-  overflow: hidden;
+
 }
 #sliderContainerDiv{
   position: absolute;
+  width: 100%;
+  height: 70vh;
+/*   position: relative; */
+  overflow: hidden;
 }
 
 .btnSlider{
@@ -426,6 +431,7 @@ video{
   margin: 0;
   transition: all 0.3s ease ;
   opacity: 0.4;
+  border-radius: 0;
 }
 .btnSlider:hover{
   font-size:var(--t-texto-S);
@@ -442,11 +448,16 @@ video{
   position: absolute;
 }
 .sliderView{
-  position: absolute;
   z-index: 1;
   right:0;
   transition: all 0.5s ease;
 }
+
+.sliderView img{
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
 .sliderLeft{
   right:100%;
   transition: all 0.5s ease;
