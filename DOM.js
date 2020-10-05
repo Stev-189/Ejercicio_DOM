@@ -342,7 +342,7 @@ let statusV=false//control del estado del video
             statusV=true
             cVideo.removeAttribute('hidden')
             } catch (error) {
-            alert(`NO SE PUDO REALIZAR CONEXION A DISPOSITIVO
+            alert(`NO SE PUEDE REALIZAR CONEXION A DISPOSITIVO
 ${error.name} `)
             /* track.error(error) */
             }
@@ -543,3 +543,54 @@ setInterval(() => {
 document.addEventListener('click',e=>{
 if(e.target.matches('#btnRight')||e.target.matches('#btnLeft')){slideActual('.slider','sliderView',e.target.id)}
 })
+///////////////////////////////////////////////////////////////////////////////////Section 12 Spyscroll
+
+function verPantalla(){
+  let widthSize=window.matchMedia("(min-width: 1024px)")
+  if(widthSize.matches){
+    document.querySelector(`#menuPalanca`).classList.add("inRight")
+    document.querySelector(`#menuPalanca`).classList.remove("palanca")
+    document.querySelector(`#botonPalancaContainer`).classList.add("btnHidden")
+    
+    localStorage.setItem('Psize1024',true)
+  } else{
+    document.querySelector(`#menuPalanca`).classList.remove("inRight")
+    document.querySelector(`#menuPalanca`).classList.add("palanca")
+    document.querySelector(`#botonPalancaContainer`).classList.remove("btnHidden")
+
+    localStorage.setItem('Psize1024',false)
+  }
+}
+
+window.addEventListener("resize",()=>{
+    let wsize=window.innerWidth>1024,
+      Psize= localStorage.getItem('Psize1024')==='false'
+  if(wsize && Psize) verPantalla()
+  if(!wsize && !Psize) verPantalla()
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+ (function scrollSpy() {
+  const targets = document.querySelectorAll(".section"),
+   options = {
+    threshold: 0.5
+   };
+  if ("IntersectionObserver" in window) {
+   (() => {
+    const inView = target => {
+     const interSecObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+       const elem = entry.target;
+       let currentNav = document.querySelector(`a[href='#${elem.id}']`);
+       entry.isIntersecting
+        ? currentNav.classList.add("inViewNav")
+        : currentNav.classList.remove("inViewNav");
+      });
+     }, options);
+     interSecObs.observe(target);
+    };
+    targets.forEach(inView);
+   })();
+  }
+ })();
+});

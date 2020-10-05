@@ -3,153 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geposicionamiento</title>
+  <title>ScrollSpy</title>
   <style>
-:root{
---first-color       :#f0db4f;
---alpha-color       : 0.9;
---second-color      : 50,51,48;
---second-color-rgb  :rgb(var(--second-color));
---t-texto           :30px;
---t-texto-S         :35px;
---t-texto--parrafos :20px;
---bottomPX          :20px;
---b-B-Color         : white;
---btn-c-DOM-size    :60px
-}
+  .section{
+    width: 80vw;
+    height: 80vh;
+  }
+ .inRight{
+    display: flex;
+    position: fixed;
+    right: 0;
+    width: 300px;
+  }
 
 
-#articleSlider{
-  justify-content: center;
-  display: flex;
-}
-.sliderContainer{
-  max-height: 600px;
-  max-width: 800px;
-  width: 100%;
-  height: 80vh;
-  position: relative;
-  overflow: hidden;
-}
-#sliderContainerDiv{
-  position: absolute;
-}
-
-.btnSlider{
-  position: absolute;
-  border: none;
-  outline: none;
-  z-index: 2;
-  width: 40px;
-  height: 100%;
-  color: var(--first-color);
-  font-size: var(--t-texto);
-  background-color:rgba(var(--second-color),var(--alpha-color));
-  margin: 0;
-  transition: all 0.3s ease ;
-  opacity: 0.4;
-}
-.btnSlider:hover{
-  font-size:var(--t-texto-S);
-  width: 88px;
-  opacity: 0.9;
-}
-.btnSliderLeft{
-  left: 0;
-}
-.btnSliderRight{
-  right: 0;
-}
-.slider{
-  position: absolute;
-}
-.sliderView{
-  position: absolute;
-  z-index: 1;
-  right:0;
-  transition: all 0.5s ease;
-}
-.sliderLeft{
-  right:100%;
-  transition: all 0.5s ease;
-}
-.sliderRight{
-  right:-100%;
-  transition: all 0.5s ease;
-}
-.sliderNone{
-  display: none;
-}
+  .inViewNav{
+    background-color: rgba(56,154,66,0.5);
+  }
   </style>
 </head>
 <body>
-  
-  <section id='articleSlider'>
-    <div id="sliderContainer" class="sliderContainer sliderContainer">
-      <div id="sliderContainerDiv" class="sliderContainer sliderContainer">
-         <img src="https://placeimg.com/800/600/animals" alt="" id="slide0" class="slider sliderLeft">
-         <img src="https://placeimg.com/800/600/arch" alt="" id="slide1" class="slider sliderView" >
-         <img src="https://placeimg.com/800/600/nature" alt="" id="slide2" class="slider sliderRight" >
-         <img src="https://placeimg.com/800/600/people" alt="" id="slide3" class="slider sliderNone" >
-         <img src="https://placeimg.com/800/600/tech" alt="" id="slide4" class="slider sliderNone" >
-      </div>
-      <button class="btnSlider btnSliderRight" id="btnRight">></button>
-      <button class="btnSlider btnSliderLeft" id="btnLeft"><</button>
-    </div>
-  </section>
-
+  <nav id="menuPalanca" class="palanca">
+    <ul>
+      <li><a class="aMenuNav botonPalanca" href="#Section_1">Reloj Digital y alarma Sonora</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_2">Evento Teclado</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_3">Diferencia Tiempo</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_4">Responsive con JavaScript</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_5">Responsive Tester</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_6">Deteccion de dispositivos (User Agent)</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_7">Deteccion de dispositivo (Camara)</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_8">Geolocalizacion</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_9">Filtro</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_10">Random Win</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_11">Slider</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_12">Section 12</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_13">Section 13</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_14">Section 14</a></li>
+    </ul>
+  </nav>
+  <section id="Section_1" class="section">Section_1</section>
+  <section id="Section_2" class="section">Section_2</section>
+  <section id="Section_3" class="section">Section_3</section>
+  <section id="Section_4" class="section">Section_4</section>
+  <section id="Section_5" class="section">Section_5</section>
+  <section id="Section_6" class="section">Section_6</section>
+  <section id="Section_7" class="section">Section_7</section>
+  <section id="Section_8" class="section">Section_8</section>
+  <section id="Section_9" class="section">Section_9</section>
+  <section id="Section_10" class="section">Section_10</section>
+  <section id="Section_11" class="section">Section_11</section>
+  <section id="Section_12" class="section">Section_12</section>
+  <section id="Section_13" class="section">Section_13</section>
+  <section id="Section_14" class="section">Section_14</section>
 </body>
 <script>
 
-  function ordSlider(nowNumber,sUlt){
-    if(sUlt+1===1) return[nowNumber,nowNumber,nowNumber];
-    if(nowNumber===sUlt)return[nowNumber-1,nowNumber,0];
-    if(nowNumber===0)return[sUlt,nowNumber,nowNumber+1];
-    else return[nowNumber-1,nowNumber,nowNumber+1];
-  }
 
-  function sliderArr(arr,sUlt,idbtn){
-    let nArr=[], pArr, arrObj=[]
-    arr.forEach(e=>nArr.push(`slide${e}`))
-    if(idbtn==='btnRight'){
-      pArr=ordSlider(arr[2],sUlt)
-      nArr.push(`slide${pArr[2]}`)
-      arrObj=[
-        {n:nArr[0], r:'sliderLeft',a:'sliderNone'},
-        {n:nArr[1], r:'sliderView',a:'sliderLeft'},
-        {n:nArr[2], r:'sliderRight',a:'sliderView'},
-        {n:nArr[3], r:'sliderNone',a:'sliderRight'}
-      ]}
-    if(idbtn==='btnLeft'){
-      pArr=ordSlider(arr[0],sUlt)
-      nArr.unshift(`slide${pArr[0]}`)
-      arrObj=[
-        {n:nArr[0], r:'sliderNone',a:'sliderLeft'},
-        {n:nArr[1], r:'sliderLeft',a:'sliderView'},
-        {n:nArr[2], r:'sliderView',a:'sliderRight'},
-        {n:nArr[3], r:'sliderRight',a:'sliderNone'}
-      ]}
-      arrObj.forEach(e=>{
-        document.querySelector(`#${e.n}`).classList.remove(e.r)
-        document.querySelector(`#${e.n}`).classList.add(e.a)
-      })
+/* function callback(entries,observe){
+  entries.forEach(e=>{
+    let etarget=e.target,
+        eNav=document.querySelector(`a[href='#${etarget.id}']`)
+    etarget.isIntersecting
+        ? eNav.classList.add("inViewNav")
+        : eNav.classList.remove("inViewNav");
+  });
+}
+  
+function scrollSpy(){
+  const $sections= document.querySelectorAll('.section'),
+        optionsObser={threshold: .5}
+  if ("IntersectionObserver" in window){()=>{
+    const inView=$section=>{
+      const observer=new IntersectionObserver(callback,optionsObser);
+      observer.observe($section);
+    };
+    $sections.forEach(inView)
   }
+  }
+}
+document.addEventListener('DOMContentLoaded',scrollSpy()) */
 
-  function slideActual(slider,view,idbtn){
-    let $slider=document.querySelectorAll(slider),
-        sUlt=$slider.length-1,
-        nowNumber='',
-        arr
-    $slider.forEach(e=>{if(e.classList[1]===view)nowNumber=parseInt(e.id.charAt(5),10)})
-    arr=ordSlider(nowNumber,sUlt)
-    sliderArr(arr,sUlt,idbtn)
+function verPantalla(){
+  let widthSize=window.matchMedia("(min-width: 1024px)")
+  if(widthSize.matches){
+    document.querySelector(`#menuPalanca`).classList.add("inRight")
+    localStorage.setItem('Psize1024',true)
+  } else{
+    document.querySelector(`#menuPalanca`).classList.remove("inRight")
+    localStorage.setItem('Psize1024',false)
   }
-setInterval(() => {
-  slideActual('.slider','sliderView','btnRight')
-}, 5000);
-document.addEventListener('click',e=>{
-  if(e.target.matches('#btnRight')||e.target.matches('#btnLeft')){slideActual('.slider','sliderView',e.target.id)}
-})
+}
+
+window.addEventListener("resize",()=>{
+    let wsize=window.innerWidth>1024,
+      Psize= localStorage.getItem('Psize1024')==='false'
+  if(wsize && Psize) verPantalla()
+  if(!wsize && !Psize) verPantalla()
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+ (function scrollSpy() {
+  const targets = document.querySelectorAll(".section"),
+   options = {
+    threshold: 0.5
+   };
+  if ("IntersectionObserver" in window) {
+   (() => {
+    const inView = target => {
+     const interSecObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+       const elem = entry.target;
+       let currentNav = document.querySelector(`a[href='#${elem.id}']`);
+       entry.isIntersecting
+        ? currentNav.classList.add("inViewNav")
+        : currentNav.classList.remove("inViewNav");
+      });
+     }, options);
+     interSecObs.observe(target);
+    };
+    targets.forEach(inView);
+   })();
+  }
+ })();
+});
 
 </script>
 </html>
