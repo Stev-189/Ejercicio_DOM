@@ -549,7 +549,7 @@ setInterval(() => {
 document.addEventListener('click',e=>{
 if(e.target.matches('#btnRight')||e.target.matches('#btnLeft')){slideActual('.slider','sliderView',e.target.id)}
 })
-///////////////////////////////////////////////////////////////////////////////////Section 12 Spyscroll
+/////////////////////////////////////////////////////////////////////////////////// Spyscroll
 
 function verPantalla(){
   let widthSize=window.matchMedia("(min-width: 1024px)")
@@ -609,4 +609,21 @@ document.addEventListener("DOMContentLoaded", () => {
    })();
   }
  })();
+});
+
+///////////////////////////////////////////////////////////////////////////////////Section 12 Smart Video
+const $video =  document.getElementById('myVideo'),options = {threshold: 1}
+function callback(entries,observe){
+  if(entries[0].isIntersecting){$video.play()}
+  else {$video.pause()}
+}
+const observer=new IntersectionObserver(callback,options)// se ingresa un call back y las opciones
+observer.observe($video)
+
+document.addEventListener("visibilitychange", ()=> {
+  if (document.visibilityState === 'visible') {
+    $video.play();
+  } else {
+    $video.pause();
+  }
 });

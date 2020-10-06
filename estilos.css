@@ -525,3 +525,13 @@ video{
 .to-top.to-topInLeft{
   left: 80px
 }
+/* ///////////////////////////////////////////////////////////////////////////////////Smart Video */
+#Section_12{
+  margin: 10% auto;
+  width: 90%;
+}
+#myVideo{
+  max-width: 560px;
+  max-height: 315px;
+  height: auto;
+}
