@@ -476,15 +476,19 @@ video{
   border: 0;
   padding: 0;
   left: 97%;
+  /* right: 0; */
+  /* transform: translate(0,0); */
   transition: left 0.5s ease;
   transition: transform 0.5s ease, opacity 0.3s ease;
   opacity: 1;
   z-index: 998;
 }
 .inRight:hover{
-  left: 90%;
+  /* left: 90%; */
+  transform: translate(-100px,0);
+  transition: transform 0.5s ease, opacity 0.3s ease;
   padding-left: 0;
-  transition: left 0.5s ease;
+  /* transition: left 0.5s ease; */
 }
 .inRight ul{
   padding-top: 0;
