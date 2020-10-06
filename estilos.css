@@ -8,7 +8,8 @@
 --t-texto-S         :35px;
 --t-texto--parrafos :20px;
 --bottomPX          :20px;
---b-B-Color         : white;
+--B-Color           : (255,255,255)
+--b-B-Color         : rgba(var(--B-Color));
 --btn-c-DOM-size    :60px
 }
 *{
@@ -73,7 +74,7 @@ header{
   border: 0;
 }
 /* ///////////////////////////////////////////////////////////////////////////Menu */
-#menuPalanca{
+.menuPalanca{
   position: fixed;
   width: 100vw;
   bottom: 0;
@@ -87,13 +88,13 @@ header{
   /* overflow-y: auto; */
 }
 nav ul{
-
   margin: 0;
   padding: 0;
   border: 0;
   padding-top: 5%;
   padding-bottom: 30%;
   height: 80vh; 
+  overflow-y: auto;
 }
 nav ul li{
   display: flex;
@@ -101,6 +102,7 @@ nav ul li{
   font-size: var(--t-texto);
   color: var(--first-color);
   border: 0;
+  text-align: center;
 /*   width: 100%;
   height: 100%; */
 }
@@ -121,7 +123,7 @@ nav ul li a:hover{
 }
 .section{
   padding-top:80px;
-  width: 100%;
+  width: 80%;
   height: 100vh;
   margin: 0 auto;
   display: flex;
@@ -466,25 +468,56 @@ video{
   display: none;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////Spyscroll */
-
-#menuPalanca .inRight{
-  position: fixed;
-  width: 300px;
-  bottom: 0;
+.inRight{
+  top: 80px;
+  width: 10%;
   height: 100vh;
-  background-color: rgba(var(--second-color),var(--alpha-color));
-  top: 0;
-  right: 0;
+  margin:0;
+  border: 0;
+  padding: 0;
+  left: 97%;
+  transition: left 0.5s ease;
   transition: transform 0.5s ease, opacity 0.3s ease;
   opacity: 1;
   z-index: 998;
-  /* overflow-y: auto; */
 }
-
+.inRight:hover{
+  left: 90%;
+  padding-left: 0;
+  transition: left 0.5s ease;
+}
+.inRight ul{
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inRight ul li{
+  text-align: center;
+  height: 100%;
+}
+.inRight ul li a{
+  font-size: 13px;
+  text-align: center;
+  height: inherit;
+  padding-left: 40px;
+}
+.inRight ul li a:hover{
+  font-size: 15px;
+  padding-left: 0;
+}
+.inRight .palanca{
+  transform: none;
+  opacity: 1;
+}
 .inViewNav{
-  background-color: rgba(56,154,66,0.5);
+  background-color: var(--first-color);
+  color: var(--second-color-rgb);
 }
 .btnHidden{
   visibility: hidden;
-  
+}
+/* cambia posicion del BTN to-Top */
+.to-top.to-topInLeft{
+  left: 80px
 }

@@ -13,9 +13,12 @@ let continuar,
 
 document.addEventListener("click",(e)=>{
   if(e.target.matches(".botonPalanca")||e.target.matches(".hamburger")||e.target.matches(".hamburger-inner")||e.target.matches(".hamburger-box")){
-    palancaMenu(e)
-    hamburgerAnimated(e)
-    e.stopPropagation()
+    //Para deter boton palanca cuando se sobre 1024
+    if(!document.querySelector('.inRight')){
+      palancaMenu(e)
+      hamburgerAnimated(e)
+      e.stopPropagation()
+    }
   }
   if(e.target.matches("#button-view-reloj")){
     continuar=true
@@ -138,8 +141,11 @@ window.addEventListener("scroll", () => {
 })
 document.addEventListener("click",(e)=>{
   if(e.target.matches(".to-top")||e.target.matches(".fa-chevron-up")){
-    $menuNav.classList.add("palanca")//esconde menu
-    $hamburger.classList.remove("is-active")//muestra hanburgesa menu
+    // esto e spara validar menu chiquitito
+    if(window.innerWidth<1024){
+      $menuNav.classList.add("palanca")//esconde menu
+      $hamburger.classList.remove("is-active")//muestra hanburgesa menu
+    }
   }
 })
 /////////////////////////////////////////////////////////////////////////////////// Dark Mode
@@ -551,22 +557,32 @@ function verPantalla(){
     document.querySelector(`#menuPalanca`).classList.add("inRight")
     document.querySelector(`#menuPalanca`).classList.remove("palanca")
     document.querySelector(`#botonPalancaContainer`).classList.add("btnHidden")
-    
+    document.querySelector(`.to-top`).classList.add("to-topInLeft")
     localStorage.setItem('Psize1024',true)
   } else{
     document.querySelector(`#menuPalanca`).classList.remove("inRight")
     document.querySelector(`#menuPalanca`).classList.add("palanca")
     document.querySelector(`#botonPalancaContainer`).classList.remove("btnHidden")
-
+    document.querySelector(`.to-top`).classList.remove("to-topInLeft")
+    document.querySelector(`.hamburger`).classList.remove("is-active")
     localStorage.setItem('Psize1024',false)
   }
 }
 
-window.addEventListener("resize",()=>{
-    let wsize=window.innerWidth>1024,
-      Psize= localStorage.getItem('Psize1024')==='false'
+function enMenuPosition(e){
+  let wsize=window.innerWidth>1024,
+    Psize= localStorage.getItem('Psize1024')===e
   if(wsize && Psize) verPantalla()
   if(!wsize && !Psize) verPantalla()
+}
+
+document.addEventListener("DOMContentLoaded", enMenuPosition('true'))
+
+window.addEventListener("resize",()=>{
+  let wsize=window.innerWidth>1024,
+    Psize= localStorage.getItem('Psize1024')==='false'
+if(wsize && Psize) verPantalla()
+if(!wsize && !Psize) verPantalla()
 });
 
 document.addEventListener("DOMContentLoaded", () => {
