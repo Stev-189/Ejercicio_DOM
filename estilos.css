@@ -533,5 +533,6 @@ video{
 #myVideo{
   max-width: 560px;
   max-height: 315px;
+  width: 90%;
   height: auto;
 }
