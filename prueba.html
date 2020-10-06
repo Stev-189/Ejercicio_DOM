@@ -5,127 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScrollSpy</title>
   <style>
-  .section{
-    width: 80vw;
-    height: 80vh;
-  }
- .inRight{
-    display: flex;
-    position: fixed;
-    right: 0;
-    width: 300px;
-  }
-
-
-  .inViewNav{
-    background-color: rgba(56,154,66,0.5);
-  }
+  
   </style>
 </head>
 <body>
-  <nav id="menuPalanca" class="palanca">
-    <ul>
-      <li><a class="aMenuNav botonPalanca" href="#Section_1">Reloj Digital y alarma Sonora</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_2">Evento Teclado</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_3">Diferencia Tiempo</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_4">Responsive con JavaScript</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_5">Responsive Tester</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_6">Deteccion de dispositivos (User Agent)</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_7">Deteccion de dispositivo (Camara)</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_8">Geolocalizacion</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_9">Filtro</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_10">Random Win</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_11">Slider</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_12">Section 12</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_13">Section 13</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_14">Section 14</a></li>
-    </ul>
-  </nav>
-  <section id="Section_1" class="section">Section_1</section>
-  <section id="Section_2" class="section">Section_2</section>
-  <section id="Section_3" class="section">Section_3</section>
-  <section id="Section_4" class="section">Section_4</section>
-  <section id="Section_5" class="section">Section_5</section>
-  <section id="Section_6" class="section">Section_6</section>
-  <section id="Section_7" class="section">Section_7</section>
-  <section id="Section_8" class="section">Section_8</section>
-  <section id="Section_9" class="section">Section_9</section>
-  <section id="Section_10" class="section">Section_10</section>
-  <section id="Section_11" class="section">Section_11</section>
-  <section id="Section_12" class="section">Section_12</section>
-  <section id="Section_13" class="section">Section_13</section>
-  <section id="Section_14" class="section">Section_14</section>
+  
+  <script>
+
+  </script>
 </body>
 <script>
-
-
-/* function callback(entries,observe){
-  entries.forEach(e=>{
-    let etarget=e.target,
-        eNav=document.querySelector(`a[href='#${etarget.id}']`)
-    etarget.isIntersecting
-        ? eNav.classList.add("inViewNav")
-        : eNav.classList.remove("inViewNav");
-  });
-}
-  
-function scrollSpy(){
-  const $sections= document.querySelectorAll('.section'),
-        optionsObser={threshold: .5}
-  if ("IntersectionObserver" in window){()=>{
-    const inView=$section=>{
-      const observer=new IntersectionObserver(callback,optionsObser);
-      observer.observe($section);
-    };
-    $sections.forEach(inView)
-  }
-  }
-}
-document.addEventListener('DOMContentLoaded',scrollSpy()) */
-
-function verPantalla(){
-  let widthSize=window.matchMedia("(min-width: 1024px)")
-  if(widthSize.matches){
-    document.querySelector(`#menuPalanca`).classList.add("inRight")
-    localStorage.setItem('Psize1024',true)
-  } else{
-    document.querySelector(`#menuPalanca`).classList.remove("inRight")
-    localStorage.setItem('Psize1024',false)
-  }
-}
-
-window.addEventListener("resize",()=>{
-    let wsize=window.innerWidth>1024,
-      Psize= localStorage.getItem('Psize1024')==='false'
-  if(wsize && Psize) verPantalla()
-  if(!wsize && !Psize) verPantalla()
-});
-
-document.addEventListener("DOMContentLoaded", () => {
- (function scrollSpy() {
-  const targets = document.querySelectorAll(".section"),
-   options = {
-    threshold: 0.5
-   };
-  if ("IntersectionObserver" in window) {
-   (() => {
-    const inView = target => {
-     const interSecObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-       const elem = entry.target;
-       let currentNav = document.querySelector(`a[href='#${elem.id}']`);
-       entry.isIntersecting
-        ? currentNav.classList.add("inViewNav")
-        : currentNav.classList.remove("inViewNav");
-      });
-     }, options);
-     interSecObs.observe(target);
-    };
-    targets.forEach(inView);
-   })();
-  }
- })();
-});
 
 </script>
 </html>
