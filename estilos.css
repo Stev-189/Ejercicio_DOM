@@ -528,7 +528,7 @@ video{
 /* ///////////////////////////////////////////////////////////////////////////////////Smart Video */
 #Section_12{
   margin: 10% auto;
-  width: 90%;
+  width: 90vw;
 }
 #myVideo{
   max-width: 560px;
