@@ -26,7 +26,7 @@ body{
 p {
   font-size: var(--t-texto--parrafos);
 }
-button{
+button, .btn {
   width: 100px;
   background-color: var(--first-color);
   color:var(--second-color-rgb);
@@ -475,7 +475,7 @@ video{
   margin:0;
   border: 0;
   padding: 0;
-  left: 97%;
+  left: 98%;
   /* right: 0; */
   /* transform: translate(0,0); */
   transition: left 0.5s ease;
@@ -536,3 +536,67 @@ video{
   width: 90%;
   height: auto;
 }
+/* ///////////////////////////////////////////////////////////////////////////////////form */
+#contactoForm{
+  width: 360px;
+  margin:10px auto;
+  display: flex;
+  flex-direction: column;
+}
+.formControl{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 50px;
+}
+#contactoForm *{
+  margin: 0;
+  width: 100%;
+}
+
+#contactoForm input:validationMessage{
+  background-color: green;
+}
+
+.smallMsj{
+  visibility: visible;
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 20px;
+  color: red;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  /* border-radius: 0  0 10px 10px; */
+  align-items: center;
+}
+.bValid{
+  border: green solid 2px;
+}
+.nValid{
+  border: red solid 2px;
+}
+#aContactoDDIV{
+  height: 230px;
+  margin-bottom: 20px;
+}
+#aContacto{
+  min-height: 215px;
+  resize: none;
+}
+
+#sContacto{
+  height: 25px;
+}
+/* .inputContacto:valid{
+  
+  visibility: hidden;
+  opacity: 0;
+}
+.inputContacto:invalid{
+  
+
+} */

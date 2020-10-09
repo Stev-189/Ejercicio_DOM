@@ -34,7 +34,7 @@
       <li><a class="aMenuNav botonPalanca" href="#Section_10">Random Win</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_11">Slider</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_12">Smart Video</a></li>
-      <li><a class="aMenuNav botonPalanca" href="#Section_13">Section 13</a></li>
+      <li><a class="aMenuNav botonPalanca" href="#Section_13">Formularios de Contacto (Validaciones)</a></li>
       <li><a class="aMenuNav botonPalanca" href="#Section_14">Section 14</a></li>
     </ul>
   </nav>
@@ -151,7 +151,27 @@
     <video id="myVideo" src="http://cdn.brid.tv/live/partners/10940/sd/653124.mp4" muted loop></video>
   </section>
   <section id="Section_13" class="section">
-    <h3>Section 13</h3>
+    <h3>Formularios de Contacto (Validaciones)</h3>
+    <form action="" id="contactoForm">
+      <h2>Envianos tus comentarios</h2>
+      <div class="formControl">
+        <input id="nContacto" class="inputContacto" type="text" placeholder="Escribe tu nombre" required pattern="[A-Za-z ñ]{5,50}" title="Debe ingresar su nombre">
+        <div id="nContactoDiv"></div>
+      </div>
+      <div class="formControl">
+        <input id="eContacto" class="inputContacto" type="email" placeholder="Escribe tu eMail" required pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" title="Debe ingresar su eMail">
+        <div id="eContactoDiv"></div>
+      </div>
+      <div class="formControl">
+        <input id="cContacto" class="inputContacto" type="text" placeholder="" required pattern="[A-Za-z ñ0-9]{5,50}" title="Debe ingresar asunto de 5 a 50 caracteres">
+        <div id="cContactoDiv"></div>
+      </div>
+      <div class="formControl" id="aContactoDDIV">
+        <textarea id="aContacto" class="inputContacto" name="textarea" required title="Debe ingresar de 5 a 255 caracteres"></textarea>
+        <div id="aContactoDiv"></div>
+      </div>
+      <input id="sContacto" class="btn sContacto" type="submit" required>
+    </form>
   </section>
   <section id="Section_14" class="section">
     <h3>Section 14</h3>
