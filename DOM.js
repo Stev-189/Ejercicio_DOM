@@ -656,3 +656,38 @@ const fValidar=(e)=>{
 document.addEventListener('keyup',(e)=>{
   if(e.target.matches('.inputContacto')) fValidar(e)
 })
+///////////////////////////////////////////////////////////////////////////////////Section 13 Narrador
+function speechReader(){
+  const $speechSelect = document.getElementById("speech-select"),
+        $speechTexarea=document.getElementById("speech-text"),
+        $speechBtn=document.getElementById("speech-btn"),
+        speechMessage = new SpeechSynthesisUtterance();//nos permite interactiar con las voces del sistema operativo
+  //console.log(speechMessage)
+  let voices=[];
+  document.addEventListener("DOMContentLoaded",e=>{
+    //window.speechSynthesis.getVoices();//no se puede ejecutar llaque las voces de deven lamamar individualemnte como evento
+    window.speechSynthesis.addEventListener("voiceschanged",e=>{
+      voices=window.speechSynthesis.getVoices()//cargamos las array d evicess detectadas a voice
+      //console.log(voices)// las 22 voces
+      voices.forEach(voice=>{
+        const $option=document.createElement("option");
+        $option.value=voice.name;
+        $option.textContent=`${voice.name} - ${voice.lang}`;
+        $speechSelect.appendChild($option)
+      })
+    })
+  })
+  document.addEventListener("change",e=>{
+    if(e.target===$speechSelect){
+      speechMessage.voice=voices.find(voice=>voice.name===e.target.value)//asignamos la voz la voz que tenga como name el select
+
+    }
+  })
+  document.addEventListener("click",e=>{
+    if(e.target===$speechBtn){
+      speechMessage.text=$speechTexarea.value;
+      window.speechSynthesis.speak(speechMessage);
+    }
+  })
+}
+speechReader()
